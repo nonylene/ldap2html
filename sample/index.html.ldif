@@ -1,0 +1,18 @@
+dn: o=index.html,dc=example,dc=com
+objectClass: x-html-file
+o: html
+
+dn: ou=html,o=index.html,dc=example,dc=com
+objectClass: x-html-element
+ou: html
+x-html-tagname: html
+
+dn: ou=body,ou=html,o=index.html,dc=example,dc=com
+objectClass: x-html-element
+ou: body
+x-html-tagname: body
+
+dn: cn=text,ou=body,ou=html,o=index.html,dc=example,dc=com
+objectClass: x-html-text
+cn: text
+x-html-text-value: Hello, world!
