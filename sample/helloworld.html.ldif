@@ -1,0 +1,18 @@
+dn: o=helloworld.html,dc=example,dc=com
+objectClass: htmlFile
+o: helloworld.html
+
+dn: ou=html,o=helloworld.html,dc=example,dc=com
+objectClass: htmlElement
+ou: html
+htmlTagName: html
+
+dn: ou=body,ou=html,o=helloworld.html,dc=example,dc=com
+objectClass: htmlElement
+ou: body
+htmlTagName: body
+
+dn: cn=text,ou=body,ou=html,o=helloworld.html,dc=example,dc=com
+objectClass: htmlText
+cn: text
+htmlTextValue: Hello, world!
