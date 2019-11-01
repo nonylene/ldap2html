@@ -16,53 +16,53 @@ olcObjectIdentifier: htmlLdapAttributeTypeAttribute htmlLdapAttributeType:2
 olcObjectIdentifier: htmlLdapObjectClass htmlLdapRoot:4
 ## Meta attributes
 olcAttributeTypes: ( htmlLdapAttributeTypeMeta:1
-    NAME 'x-html-nth-child'
+    NAME 'htmlNthChild'
     DESC 'Position of particles between children'
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
     SINGLE-VALUE
     )
 olcAttributeTypes: ( htmlLdapAttributeTypeMeta:2
-    NAME 'x-html-text-value'
+    NAME 'htmlTextValue'
     DESC 'Text for HTML text token'
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
     SINGLE-VALUE
     )
 olcAttributeTypes: ( htmlLdapAttributeTypeMeta:3
-    NAME 'x-html-tagname'
+    NAME 'htmlTagName'
     DESC 'Tag name for html element'
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
     SINGLE-VALUE
     )
 ## Attributes for html element.
-### Names MUST be formatted like "x-html-attribute-{tag name}".
+### Names MUST be formatted like "htmlAttr{AttrName}".
 olcAttributeTypes: ( htmlLdapAttributeTypeAttribute:1
-    NAME 'x-html-attr-class'
+    NAME 'htmlAttrClass'
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
     SINGLE-VALUE
     )
 ## Object classes
 olcObjectClasses: ( htmlLdapObjectClass:1
-    NAME 'x-html-file'
+    NAME 'htmlFile'
     DESC 'HTML file name'
     SUP top
     MUST ( o )
     )
 olcObjectClasses: ( htmlLdapObjectClass:2
-    NAME 'x-html-particle'
+    NAME 'htmlParticle'
     DESC 'Base abstract object class for text token and html element'
     SUP top ABSTRACT
-    MAY ( x-html-nth-child )
+    MAY ( htmlNthChild )
     )
 olcObjectClasses: ( htmlLdapObjectClass:3
-    NAME 'x-html-element'
+    NAME 'htmlElement'
     DESC 'HTML element'
-    SUP x-html-particle
-    MUST ( ou $ x-html-tagname )
-    MAY ( x-html-attr-class )
+    SUP htmlParticle
+    MUST ( ou $ htmlTagName )
+    MAY ( htmlAttrClass )
     )
 olcObjectClasses: ( htmlLdapObjectClass:4
-    NAME 'x-html-text'
+    NAME 'htmlText'
     DESC 'Text token inside HTML element'
-    SUP x-html-particle
-    MUST ( cn $ x-html-text-value )
+    SUP htmlParticle
+    MUST ( cn $ htmlTextValue )
     )
