@@ -8,8 +8,6 @@ See [sample](./sample) directory.
 
 ## Schemas
 
-### Common
-
 ### HTML File
 
 ObjectClass: `htmlFile`
