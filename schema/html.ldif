@@ -40,6 +40,16 @@ olcAttributeTypes: ( htmlLdapAttributeTypeAttribute:1
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
     SINGLE-VALUE
     )
+olcAttributeTypes: ( htmlLdapAttributeTypeAttribute:2
+    NAME 'htmlAttrLang'
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
+    SINGLE-VALUE
+    )
+olcAttributeTypes: ( htmlLdapAttributeTypeAttribute:3
+    NAME 'htmlAttrHref'
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
+    SINGLE-VALUE
+    )
 ## Object classes
 olcObjectClasses: ( htmlLdapObjectClass:1
     NAME 'htmlFile'
@@ -58,7 +68,7 @@ olcObjectClasses: ( htmlLdapObjectClass:3
     DESC 'HTML element'
     SUP htmlParticle ABSTRACT
     MUST ( ou $ htmlTagName )
-    MAY ( htmlAttrClass )
+    MAY ( htmlAttrClass $ htmlAttrLang $ htmlAttrHref )
     )
 olcObjectClasses: ( htmlLdapObjectClass:4
     NAME 'htmlVoidElement'

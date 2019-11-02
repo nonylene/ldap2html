@@ -42,6 +42,8 @@ class LdapHtmlElement(LdapHtmlParticle):
     htmlTagName: List[bytes]
     # attributes
     htmlAttrClass: List[bytes]
+    htmlAttrLang: List[bytes]
+    htmlAttrHref: List[bytes]
 
 
 OBJECT_CLASS_HTML_VOID_ELEMENT = 'htmlVoidElement'

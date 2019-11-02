@@ -12,6 +12,8 @@ from .html.model import HtmlElement, HtmlText, HtmlFile, HtmlVoidElement, HtmlNo
 # For convertion
 ELEMENT_ATTR_DICT = {
     'htmlAttrClass': 'class',
+    'htmlAttrLang': 'lang',
+    'htmlAttrHref': 'href',
 }
 
 filter_normal_element = f'(objectClass={ldap_model.OBJECT_CLASS_HTML_NORMAL_ELEMENT})'
