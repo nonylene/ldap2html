@@ -64,7 +64,7 @@ optional arguments:
                         LDAP bind dn password
   -d DIRECTORY, --dir DIRECTORY
                         Target directory to save files
-
+  -v, --verbose         Verbose output
 ```
 
 ### HTML -> LDAP

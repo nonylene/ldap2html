@@ -2,6 +2,7 @@ import ldap3
 import sys
 import traceback
 from pathlib import Path
+import logging
 
 from .ldap.model import LdapHtmlFile
 from .ldap import model as ldap_model
@@ -22,6 +23,8 @@ def ldap2html(config: Config):
     for l_html_file in search(conn, config.search_base, html_file_filter, LdapHtmlFile):
         try:
             html_file = to_html_file(conn, l_html_file)
+            logging.debug(html_file)
+
             html = html_file.to_html()
             with open(directory / html_file.filename, "w") as f:
                 f.write(html)
