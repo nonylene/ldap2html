@@ -71,7 +71,7 @@ optional arguments:
 
 TODO
 
-## Debug
+## Develop
 
 ### Setup LDAP environment via Docker
 
@@ -81,3 +81,9 @@ $ docker run -p 389:389 -p 636:636 -v `pwd`:/app -v `pwd`/schema:/container/serv
     osixia/openldap --copy-service
 $ docker exec ldap2html ldapadd -x -H ldap://localhost -D "cn=admin,dc=example,dc=com" -w admin  -f /app/sample/helloworld.html.ldif
 ```
+
+### How to add HTML element attributes
+
+1. Add `htmlAttr{AttrName}` LDAP attribute in [schema](./schema/html.ldif).
+2. Add python model mapping to `LdapHTMLElement` in `ldap/mode.py`.
+3. Add python LDAP-HTML convertion mapping to `ELEMENT_ATTR_DICT` in `convert.py`.
