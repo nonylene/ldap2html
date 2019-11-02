@@ -1,6 +1,10 @@
 # ldap2html
 
-LDAP <-> HTML convertion schemas and tools.
+Schemas and tools to store HTML documents in LDAP.
+
+## Sample
+
+See [sample](./sample) directory.
 
 ## Schemas
 
