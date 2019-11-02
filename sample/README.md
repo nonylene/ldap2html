@@ -2,7 +2,7 @@
 
 ## helloworld.html
 
-### LDAP structure
+### LDAP entry structure
 
 ```
 htmlFile (helloworld.html)
