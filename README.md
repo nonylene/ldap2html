@@ -10,7 +10,11 @@ See [sample](./sample) directory.
 
 ### Common
 
-- `htmlNthChild`: Position among the children (elements and texts)
+### HTML File
+
+ObjectClass: `htmlFile`
+
+- `o`: Filename.
 
 ### HTML Element
 
@@ -18,6 +22,7 @@ ObjectClass: `htmlNormalElement`, `HTMLVoidElement` (for elements without childr
 
 - `ou`: Element name. `dn` will be the id of the element!
 - `htmlTagName`: Tag name
+- `htmlNthChild`: Position among the children (elements and texts)
 
 
 #### Element attributes
@@ -34,6 +39,7 @@ ObjectClass: `htmlText`
 
 - `cn`: Identifier (required to set dn on LDAP, but is ignored on ldap2html)
 - `htmlTextValue`: Text value
+- `htmlNthChild`: Position among the children (elements and texts)
 
 ## Tools
 
