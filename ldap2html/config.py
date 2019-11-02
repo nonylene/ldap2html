@@ -7,3 +7,5 @@ class Config:
     search_base: str
     bind_dn: str
     bind_dn_passwd: str
+
+    directory: str
