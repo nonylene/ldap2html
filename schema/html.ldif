@@ -3,7 +3,7 @@
 # oid base is generated from uuid (25c06060-7858-409a-b0ef-40d8c84a0f39).
 # More information: http://www.oid-info.com/get/2.25
 #
-# base: 2.25.50180311595351017867546291434764767033.1
+# base: 2.25.50180311595351017867546291434764767033
 
 dn: cn=html,cn=schema,cn=config
 objectClass: olcSchemaConfig
