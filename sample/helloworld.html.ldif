@@ -3,16 +3,23 @@ objectClass: htmlFile
 o: helloworld.html
 
 dn: ou=html,o=helloworld.html,dc=example,dc=com
-objectClass: htmlElement
+objectClass: htmlNormalElement
 ou: html
 htmlTagName: html
 
 dn: ou=body,ou=html,o=helloworld.html,dc=example,dc=com
-objectClass: htmlElement
+objectClass: htmlNormalElement
 ou: body
 htmlTagName: body
+
+dn: ou=br,ou=body,ou=html,o=helloworld.html,dc=example,dc=com
+objectClass: htmlVoidElement
+ou: br
+htmlTagName: br
+htmlNthChild: 2
 
 dn: cn=text,ou=body,ou=html,o=helloworld.html,dc=example,dc=com
 objectClass: htmlText
 cn: text
 htmlTextValue: Hello, world!
+htmlNthChild: 1

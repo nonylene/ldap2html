@@ -56,11 +56,21 @@ olcObjectClasses: ( htmlLdapObjectClass:2
 olcObjectClasses: ( htmlLdapObjectClass:3
     NAME 'htmlElement'
     DESC 'HTML element'
-    SUP htmlParticle
+    SUP htmlParticle ABSTRACT
     MUST ( ou $ htmlTagName )
     MAY ( htmlAttrClass )
     )
 olcObjectClasses: ( htmlLdapObjectClass:4
+    NAME 'htmlVoidElement'
+    DESC 'HTML void element (like br)'
+    SUP htmlElement
+    )
+olcObjectClasses: ( htmlLdapObjectClass:5
+    NAME 'htmlNormalElement'
+    DESC 'HTML normal element (includes templates, texarea, ...)'
+    SUP htmlElement
+    )
+olcObjectClasses: ( htmlLdapObjectClass:6
     NAME 'htmlText'
     DESC 'Text token inside HTML element'
     SUP htmlParticle

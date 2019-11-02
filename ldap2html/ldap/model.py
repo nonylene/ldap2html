@@ -36,15 +36,28 @@ class LdapHtmlText(LdapHtmlParticle):
     htmlTextValue: List[bytes]
 
 
-OBJECT_CLASS_HTML_ELEMENT = 'htmlElement'
-
-
 @dataclass
 class LdapHtmlElement(LdapHtmlParticle):
     ou: List[str]
     htmlTagName: List[bytes]
     # attributes
     htmlAttrClass: List[bytes]
+
+
+OBJECT_CLASS_HTML_VOID_ELEMENT = 'htmlVoidElement'
+
+
+@dataclass
+class LdapHtmlVoidElement(LdapHtmlElement):
+    pass
+
+
+OBJECT_CLASS_HTML_NORMAL_ELEMENT = 'htmlNormalElement'
+
+
+@dataclass
+class LdapHtmlNormalElement(LdapHtmlElement):
+    pass
 
 
 def from_ldap_entry(entry: ldap3.Entry, cls: Type[LdapBase]) -> LdapBase:
