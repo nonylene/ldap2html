@@ -1,6 +1,7 @@
 import ldap3
 import sys
 import traceback
+from pathlib import Path
 
 from .ldap.model import LdapHtmlFile
 from .ldap import model as ldap_model
@@ -10,6 +11,9 @@ from .convert import to_html_file
 
 
 def ldap2html(config: Config):
+    directory = Path(config.directory)
+    directory.mkdir(parents=True, exist_ok=True)
+
     server = ldap3.Server(config.ldap_uri, get_info=ldap3.ALL)
     conn = ldap3.Connection(server, config.bind_dn, config.bind_dn_passwd, auto_bind=True)
 
@@ -19,7 +23,7 @@ def ldap2html(config: Config):
         try:
             html_file = to_html_file(conn, l_html_file)
             html = html_file.to_html()
-            with open(html_file.filename, "w") as f:
+            with open(directory / html_file.filename, "w") as f:
                 f.write(html)
         except Exception:
             print(f"Failed to process file: {l_html_file}", file=sys.stderr)

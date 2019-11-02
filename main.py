@@ -1,7 +1,6 @@
 import argparse
 
-from ldap2html.config import Config
-from ldap2html.ldap2html import ldap2html
+from ldap2html import Config, ldap2html
 
 parser = argparse.ArgumentParser(description='Convert LDAP entries to HTML file')
 parser.add_argument('-H', '--uri', dest='ldap_uri', type=str, default="ldap://localhost", help="LDAP uri")
