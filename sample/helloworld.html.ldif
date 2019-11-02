@@ -15,6 +15,7 @@ htmlTagName: body
 dn: ou=br,ou=body,ou=html,o=helloworld.html,dc=example,dc=com
 objectClass: htmlVoidElement
 ou: br
+htmlAttrClass: hello
 htmlTagName: br
 htmlNthChild: 2
 
