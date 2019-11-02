@@ -16,9 +16,9 @@ ObjectClass: `htmlElement`
 - `htmlTagName`: Tag name
 
 
-#### HTML attributes
+#### Element attributes
 
-You can set pre-defined HTML attributes to elements. Each LDAP attribute is named like `htmlAttr{HTMLAttribute}`.
+You can set pre-defined HTML Element attributes to LDAP elements. Each LDAP attribute is named like `htmlAttr{HTMLAttribute}`.
 
 Available LDAP attributes:
 
