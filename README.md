@@ -19,8 +19,8 @@ ObjectClass: `htmlFile`
 ObjectClass: `htmlNormalElement`, `HTMLVoidElement` (for elements without children like `br`)
 
 - `ou`: Element name. `dn` will be the id of the element!
-- `htmlTagName`: Tag name
-- `htmlNthChild`: Position among the children (elements and texts)
+- `htmlTagName`: Tag name.
+- `htmlNthChild`: (Optional) Position among the children (elements and texts).
 
 
 #### Element attributes
@@ -30,14 +30,16 @@ You can set pre-defined HTML Element attributes to LDAP elements. Each LDAP attr
 Available LDAP attributes:
 
 - `htmlAttrClass`
+- `htmlAttrHref`
+- `htmlAttrLang`
 
 ### Text
 
 ObjectClass: `htmlText`
 
-- `cn`: Identifier (required to set dn on LDAP, but is ignored on ldap2html)
-- `htmlTextValue`: Text value
-- `htmlNthChild`: Position among the children (elements and texts)
+- `cn`: Identifier (required to set dn on LDAP, but is ignored on ldap2html).
+- `htmlTextValue`: Text value.
+- `htmlNthChild`: (Optional) Position among the children (elements and texts).
 
 ## Tools
 
@@ -91,3 +93,4 @@ $ docker exec ldap2html ldapadd -x -H ldap://localhost -D "cn=admin,dc=example,d
 1. Add `htmlAttr{AttrName}` LDAP attribute in [schema](./schema/html.ldif).
 2. Add python model mapping to `LdapHTMLElement` in `ldap/mode.py`.
 3. Add python LDAP-HTML convertion mapping to `ELEMENT_ATTR_DICT` in `convert.py`.
+4. Document new attributes in README.
