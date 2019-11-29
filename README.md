@@ -4,7 +4,8 @@ Schemas and tools to store HTML documents in LDAP.
 
 ## Sample
 
-See [sample](./sample) directory.
+- [sample](./sample) directory
+- [ku-ldif/ku-ldif.github.io repository](https://github.com/ku-ldif/ku-ldif.github.io)
 
 ## Schemas
 
