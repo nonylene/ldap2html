@@ -53,7 +53,7 @@ $ poetry install [--no-dev]
 ### LDAP -> HTML
 
 ```console
-$ poetry run python3 main.py -h
+$ poetry run ldap2html -h
 usage: main.py [-h] [-H LDAP_URI] -b SEARCH_BASE -D BIND_DN -w BIND_DN_PASSWD
                [-d DIRECTORY]
 
