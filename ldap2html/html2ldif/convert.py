@@ -1,4 +1,3 @@
-import pprint
 import re
 from html.parser import HTMLParser
 from typing import List, Tuple, Optional, Container, Dict
@@ -28,6 +27,9 @@ class Parser(HTMLParser):
         self.parents.append(HtmlNormalElement(_id, tag, attr_dict, list()))
 
     def handle_endtag(self, tag: str):
+        if tag in VOID_TAGS:
+            return
+
         element = self.parents.pop()
         if self.parents:
             self.parents[-1].children.append(element)
@@ -35,6 +37,9 @@ class Parser(HTMLParser):
             self.top = element
 
     def handle_data(self, data: str):
+        if not self.parents:
+            # Initial status
+            return
         self.parents[-1].children.append(HtmlText(data))
 
 
@@ -92,11 +97,12 @@ def _generate_unique_id(used: Container[str], candidate: str) -> str:
 
 def _generate_good_id(used: List[str], element: HtmlElement) -> str:
     # Preserve dn (best effort)
-    matched = ELEMENT_DN_PATTERN.match(element._id)
-    if matched:
-        return _generate_unique_id(used, matched.group(1))
-    else:
-        return _generate_unique_id(used, element.tag_name)
+    if element._id is not None:
+        matched = ELEMENT_DN_PATTERN.match(element._id)
+        if matched:
+            return _generate_unique_id(used, matched.group(1))
+
+    return _generate_unique_id(used, element.tag_name)
 
 
 def to_ldap_html_particles(element: HtmlNormalElement, dn: str, ou: str, nth: Optional[int]) -> List[LdapHtmlParticle]:
@@ -133,9 +139,3 @@ def to_ldap_entries(html: str, domain: str, filename: str) -> List[LdapBase]:
 
     top_id = _generate_good_id([], parser.top)
     return [ldap_html_file] + to_ldap_html_particles(parser.top, f"ou={top_id},{file_dn}", top_id, None)
-
-
-if __name__ == "__main__":
-    html = "<!DOCTYPE html><html lang='ja' id='ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><head id='ou=head,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><title id='ou=title,ou=head,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>京都大学 LDIF 同好会</title></head><body id='ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><h1 id='ou=title,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>京都大学 LDIF 同好会</h1><a class='twitter-share-button' href='https://twitter.com/intent/tweet' id='ou=twitter_link,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'></a><h2 id='ou=description_title,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>京都大学 LDIF 同好会とは？</h2><p id='ou=description,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>京都大学 LDIF 同好会とは、 <a href='https://tools.ietf.org/html/rfc2849' id='ou=ldif_link,ou=description,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>LDIF (LDAP Data Interchange Format)</a> が好きな人間が集まる同好会です。</p><h2 id='ou=activities_title,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>活動内容例</h2><ul id='ou=activities_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><li id='ou=activities_write,ou=activities_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><p id='ou=title,ou=activities_write,ou=activities_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>LDIF ファイルを作成する</p><p id='ou=description,ou=activities_write,ou=activities_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>このページの HTML 文書も、 <a href='https://github.com/ku-ldif/ku-ldif.github.io/blob/master/src/index.html.ldif' id='ou=ldif_gh_link,ou=description,ou=activities_write,ou=activities_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>LDIF ファイル</a> から <a href='https://github.com/nonylene/ldap2html' id='ou=ldap2html_link,ou=description,ou=activities_write,ou=activities_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>ldap2html</a> を用いて生成されています！</p></li><li id='ou=activities_dream,ou=activities_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><p id='ou=title,ou=activities_dream,ou=activities_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><a href='/dreams.html' id='ou=href,ou=title,ou=activities_dream,ou=activities_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>LDIF に関する夢</a>を見る</p></li></ul><h2 id='ou=links,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>関連リンク</h2><ul id='ou=links_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><li id='ou=org,ou=links_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><p id='ou=title,ou=org,ou=links_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'><a href='https://github.com/ku-ldif' id='ou=org_link,ou=title,ou=org,ou=links_list,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>GitHub organization</a></p></li></ul><script id='ou=twitter_script,ou=body,ou=html,o=index.html,dc=ku-ldif,dc=github,dc=io'>window.twttr = (function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0],    t = window.twttr || {};  if (d.getElementById(id)) return t;  js = d.createElement(s);  js.id = id;  js.src = 'https: // platform.twitter.com/widgets.js';  fjs.parentNode.insertBefore(js, fjs);  t._e = [];  t.ready = function(f) {    t._e.push(f);  };  return t;}(document, 'script', 'twitter-wjs'));</script></body></html>"
-
-    pprint.pprint(to_ldap_entries(html, "example.com", "example.html"))

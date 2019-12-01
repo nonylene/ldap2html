@@ -76,7 +76,25 @@ optional arguments:
 
 ### HTML -> LDAP
 
-TODO
+```console
+$ poetry run html2ldif -h
+usage: html2ldif [-h] -n DOMAIN [-d DIRECTORY] [-m] [-v] file [file ...]
+
+Convert LDAP entries to HTML file
+
+positional arguments:
+  file                  HTML files
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n DOMAIN, --domain DOMAIN
+                        Domain name for HTML files
+  -d DIRECTORY, --dir DIRECTORY
+                        Target directory to save files. Default value is
+                        out/ldif.
+  -m, --modify          Generate LDIF for ldapmodify
+  -v, --verbose         Verbose output
+```
 
 ## Develop
 

@@ -1,5 +1,5 @@
-from dataclasses import dataclass
-from typing import List, Type
+from dataclasses import dataclass, asdict
+from typing import List, Type, Dict
 import ldap3
 
 # For convertion
@@ -17,6 +17,14 @@ ELEMENT_ATTR_DICT = {
 class LdapBase:
     dn: str
 
+    def object_class(self) -> str:
+        raise NotImplementedError()
+
+    def attributes(self) -> Dict[str, List[bytes]]:
+        dic = asdict(self)
+        del dic['dn']
+        return dic
+
 
 OBJECT_CLASS_HTML_FILE = 'htmlFile'
 
@@ -24,6 +32,9 @@ OBJECT_CLASS_HTML_FILE = 'htmlFile'
 @dataclass
 class LdapHtmlFile(LdapBase):
     o: List[str]
+
+    def object_class(self):
+        return OBJECT_CLASS_HTML_FILE
 
 
 OBJECT_CLASS_HTML_PARTILCE = 'htmlParticlce'
@@ -33,6 +44,9 @@ OBJECT_CLASS_HTML_PARTILCE = 'htmlParticlce'
 class LdapHtmlParticle(LdapBase):
     htmlNthChild: List[int]
 
+    def object_class(self):
+        return OBJECT_CLASS_HTML_PARTILCE
+
 
 OBJECT_CLASS_HTML_TEXT = 'htmlText'
 
@@ -41,6 +55,9 @@ OBJECT_CLASS_HTML_TEXT = 'htmlText'
 class LdapHtmlText(LdapHtmlParticle):
     cn: List[str]
     htmlTextValue: List[bytes]
+
+    def object_class(self):
+        return OBJECT_CLASS_HTML_TEXT
 
 
 @dataclass
@@ -58,7 +75,9 @@ OBJECT_CLASS_HTML_VOID_ELEMENT = 'htmlVoidElement'
 
 @dataclass
 class LdapHtmlVoidElement(LdapHtmlElement):
-    pass
+
+    def object_class(self):
+        return OBJECT_CLASS_HTML_VOID_ELEMENT
 
 
 OBJECT_CLASS_HTML_NORMAL_ELEMENT = 'htmlNormalElement'
@@ -66,7 +85,9 @@ OBJECT_CLASS_HTML_NORMAL_ELEMENT = 'htmlNormalElement'
 
 @dataclass
 class LdapHtmlNormalElement(LdapHtmlElement):
-    pass
+
+    def object_class(self):
+        return OBJECT_CLASS_HTML_NORMAL_ELEMENT
 
 
 def from_ldap_entry(entry: ldap3.Entry, cls: Type[LdapBase]) -> LdapBase:
