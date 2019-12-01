@@ -2,6 +2,13 @@ from dataclasses import dataclass
 from typing import List, Type
 import ldap3
 
+# For convertion
+ELEMENT_ATTR_DICT = {
+    'htmlAttrClass': 'class',
+    'htmlAttrLang': 'lang',
+    'htmlAttrHref': 'href',
+}
+
 # ldap_model definitions must have the same attributes as LDAP schema.
 # These classes may be instanced dynamically (see from_ldap_entry()).
 
