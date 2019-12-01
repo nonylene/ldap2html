@@ -2,11 +2,13 @@
 name = "ldap2html"
 version = "0.1.0"
 description = ""
+homepage = "https://github.com/nonylene/ldap2html"
+repository = "https://github.com/nonylene/ldap2html"
 authors = ["nonylene <nonylene@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 ldap3 = "^2.6"
 
 [tool.poetry.dev-dependencies]

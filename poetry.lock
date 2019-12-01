@@ -164,8 +164,8 @@ python-versions = "*"
 version = "1.11.2"
 
 [metadata]
-content-hash = "404aaa3f44006dfd9f02af490caf35492f54ee6bcfe1dbd60bcaf21eabc01b6e"
-python-versions = "^3.6"
+content-hash = "081a591bab1ab578f151d6b18d9d19bdbda190cea19cb653fbc210c57e04e71f"
+python-versions = "^3.7"
 
 [metadata.hashes]
 astroid = ["71ea07f44df9568a75d0f354c49143a4575d90645e9fead6dfb52c26a85ed13a", "840947ebfa8b58f318d42301cf8c0a20fd794a33b61cc4638e28e9e61ba32f42"]
