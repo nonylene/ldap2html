@@ -4,10 +4,10 @@ from operator import itemgetter
 
 import itertools
 
-from .ldap.model import LdapHtmlText, LdapHtmlElement, LdapHtmlParticle, LdapHtmlFile, LdapHtmlVoidElement
-from .ldap import model as ldap_model
-from .ldap.utils import search
-from .html.model import HtmlElement, HtmlText, HtmlFile, HtmlVoidElement, HtmlNormalElement
+from ..ldap.model import LdapHtmlText, LdapHtmlElement, LdapHtmlParticle, LdapHtmlFile, LdapHtmlVoidElement
+from ..ldap import model as ldap_model
+from ..ldap.utils import search
+from ..html.model import HtmlElement, HtmlText, HtmlFile, HtmlVoidElement, HtmlNormalElement
 
 # For convertion
 ELEMENT_ATTR_DICT = {
