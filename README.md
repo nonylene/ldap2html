@@ -7,6 +7,11 @@ Schemas and tools to store HTML documents in LDAP.
 - [sample](./sample) directory
 - [ku-ldif/ku-ldif.github.io repository](https://github.com/ku-ldif/ku-ldif.github.io)
 
+## Requirements
+
+- Python 3.7 or later
+- LDAP server installed with [schema](./schema/html.ldif)
+
 ## Install
 
 You can install from [PyPI](https://pypi.org/project/ldap2html/).
@@ -85,9 +90,9 @@ TODO
 ### Setup
 
 ```cosnsole
-$ poetry install [--no-dev]
+$ pip3 install poetry
+$ poetry install
 ```
-
 
 ### Setup LDAP environment via Docker
 
