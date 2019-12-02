@@ -50,6 +50,21 @@ olcAttributeTypes: ( htmlLdapAttributeTypeAttribute:3
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
     SINGLE-VALUE
     )
+olcAttributeTypes: ( htmlLdapAttributeTypeAttribute:4
+    NAME 'htmlAttrSrc'
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
+    SINGLE-VALUE
+    )
+olcAttributeTypes: ( htmlLdapAttributeTypeAttribute:5
+    NAME 'htmlAttrAlt'
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
+    SINGLE-VALUE
+    )
+olcAttributeTypes: ( htmlLdapAttributeTypeAttribute:6
+    NAME 'htmlAttrWidth'
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
+    SINGLE-VALUE
+    )
 ## Object classes
 olcObjectClasses: ( htmlLdapObjectClass:1
     NAME 'htmlFile'
@@ -68,7 +83,7 @@ olcObjectClasses: ( htmlLdapObjectClass:3
     DESC 'HTML element'
     SUP htmlParticle ABSTRACT
     MUST ( ou $ htmlTagName )
-    MAY ( htmlAttrClass $ htmlAttrLang $ htmlAttrHref )
+    MAY ( htmlAttrClass $ htmlAttrLang $ htmlAttrHref $ htmlAttrSrc $ htmlAttrAlt $ htmlAttrWidth )
     )
 olcObjectClasses: ( htmlLdapObjectClass:4
     NAME 'htmlVoidElement'

@@ -14,6 +14,9 @@ ELEMENT_ATTR_DICT = {
     'htmlAttrClass': 'class',
     'htmlAttrLang': 'lang',
     'htmlAttrHref': 'href',
+    'htmlAttrSrc': 'src',
+    'htmlAttrAlt': 'alt',
+    'htmlAttrWidth': 'width',
 }
 
 filter_normal_element = f'(objectClass={ldap_model.OBJECT_CLASS_HTML_NORMAL_ELEMENT})'
