@@ -14,7 +14,6 @@ from .convert import to_html_file
 
 def ldap2html(config: Config):
     directory = Path(config.directory)
-    directory.mkdir(parents=True, exist_ok=True)
 
     server = ldap3.Server(config.ldap_uri, get_info=ldap3.ALL)
     conn = ldap3.Connection(server, config.bind_dn, config.bind_dn_passwd, auto_bind=True)
@@ -27,6 +26,8 @@ def ldap2html(config: Config):
             logging.debug(html_file)
 
             html = html_file.to_html()
+            path = directory / html_file.filename
+            path.parent.mkdir(parents=True, exist_ok=True)
             with open(directory / html_file.filename, "w") as f:
                 f.write(html)
         except Exception:
