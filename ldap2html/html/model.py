@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 
 @dataclass
@@ -19,14 +19,14 @@ class HtmlText:
 
 @dataclass
 class HtmlElement(HtmlParticle):
-    _id: str
+    _id: Optional[str]
     tag_name: str
     attributes: Dict[str, str]
 
     def to_attribute_html(self):
         # attributes
         attributes = self.attributes.copy()
-        attributes['id'] = self._id
+        attributes['id'] = self._id  # _id should be set here
         attrs = ' '.join(f"{k}='{v}'" for k, v in attributes.items())
         return attrs
 

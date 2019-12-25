@@ -46,6 +46,9 @@ Available LDAP attributes:
 - `htmlAttrClass`
 - `htmlAttrHref`
 - `htmlAttrLang`
+- `htmlAttrSrc`
+- `htmlAttrAlt`
+- `htmlAttrWidth`
 
 ### Text
 
@@ -83,7 +86,27 @@ optional arguments:
 
 ### HTML -> LDAP
 
-TODO
+```console
+$ poetry run html2ldif -h
+usage: html2ldif [-h] -n DOMAIN [-d DIRECTORY] [-m] [-v] file [file ...]
+
+Convert LDAP entries to HTML file
+
+positional arguments:
+  file                  HTML files
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n DOMAIN, --domain DOMAIN
+                        Domain name for HTML files
+  -d TARGET_DIRECTORY, --dir TARGET_DIRECTORY
+                        Target directory to save files. Default value is
+                        out/ldif.
+  -b BASE_DIRECTORY, --basedir BASE_DIRECTORY
+                        Base (prefix) directory for html files.
+  -m, --modify          Generate LDIF for ldapmodify
+  -v, --verbose         Verbose output
+```
 
 ## Develop
 
@@ -106,6 +129,6 @@ $ docker exec ldap2html ldapadd -x -H ldap://localhost -D "cn=admin,dc=example,d
 ### How to add HTML element attributes
 
 1. Add `htmlAttr{AttrName}` LDAP attribute in [schema](./schema/html.ldif).
-2. Add python model mapping to `LdapHTMLElement` in `ldap/mode.py`.
-3. Add python LDAP-HTML convertion mapping to `ELEMENT_ATTR_DICT` in `convert.py`.
+2. Add python model mapping to `LdapHTMLElement` in `ldap/model.py`.
+3. Add python LDAP-HTML convertion mapping to `ELEMENT_ATTR_DICT` in `ldap/model.py`.
 4. Document new attributes in README.

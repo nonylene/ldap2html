@@ -22,4 +22,5 @@ requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
 [tool.poetry.scripts]
-ldap2html = 'ldap2html:main'
+ldap2html = 'ldap2html.ldap2html:main'
+html2ldif = 'ldap2html.html2ldif:main'

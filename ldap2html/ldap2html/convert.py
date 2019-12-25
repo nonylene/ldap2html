@@ -4,20 +4,10 @@ from operator import itemgetter
 
 import itertools
 
-from .ldap.model import LdapHtmlText, LdapHtmlElement, LdapHtmlParticle, LdapHtmlFile, LdapHtmlVoidElement
-from .ldap import model as ldap_model
-from .ldap.utils import search
-from .html.model import HtmlElement, HtmlText, HtmlFile, HtmlVoidElement, HtmlNormalElement
-
-# For convertion
-ELEMENT_ATTR_DICT = {
-    'htmlAttrClass': 'class',
-    'htmlAttrLang': 'lang',
-    'htmlAttrHref': 'href',
-    'htmlAttrSrc': 'src',
-    'htmlAttrAlt': 'alt',
-    'htmlAttrWidth': 'width',
-}
+from ..ldap.model import LdapHtmlText, LdapHtmlElement, LdapHtmlParticle, LdapHtmlFile, LdapHtmlVoidElement, ELEMENT_ATTR_DICT
+from ..ldap import model as ldap_model
+from ..ldap.utils import search
+from ..html.model import HtmlElement, HtmlText, HtmlFile, HtmlVoidElement, HtmlNormalElement
 
 filter_normal_element = f'(objectClass={ldap_model.OBJECT_CLASS_HTML_NORMAL_ELEMENT})'
 filter_void_element = f'(objectClass={ldap_model.OBJECT_CLASS_HTML_VOID_ELEMENT})'
