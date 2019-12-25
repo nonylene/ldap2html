@@ -84,7 +84,7 @@ optional arguments:
   -v, --verbose         Verbose output
 ```
 
-### HTML -> LDAP
+### HTML -> LDIF
 
 ```console
 $ poetry run html2ldif -h
@@ -132,3 +132,9 @@ $ docker exec ldap2html ldapadd -x -H ldap://localhost -D "cn=admin,dc=example,d
 2. Add python model mapping to `LdapHTMLElement` in `ldap/model.py`.
 3. Add python LDAP-HTML convertion mapping to `ELEMENT_ATTR_DICT` in `ldap/model.py`.
 4. Document new attributes in README.
+
+### How to bump up version
+
+1. Put new version in [pyproject.toml](./pyproject.toml)
+2. `git tag v{version} && git push v{version}`
+3. `poetry build && poetry publish`
