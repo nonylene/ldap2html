@@ -46,6 +46,9 @@ Available LDAP attributes:
 - `htmlAttrClass`
 - `htmlAttrHref`
 - `htmlAttrLang`
+- `htmlAttrSrc`
+- `htmlAttrAlt`
+- `htmlAttrWidth`
 
 ### Text
 
