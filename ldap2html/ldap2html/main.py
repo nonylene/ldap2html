@@ -42,7 +42,8 @@ def main():
     parser.add_argument('-b', '--searchbase', dest='search_base', type=str, required=True, help="LDAP search base")
     parser.add_argument('-D', '--binddn', dest='bind_dn', type=str, required=True, help="LDAP bind dn")
     parser.add_argument('-w', '--passwd', dest='bind_dn_passwd', type=str, required=True, help="LDAP bind dn password")
-    parser.add_argument('-d', '--dir', dest='directory', type=str, default="out", help="Target directory to save files")
+    parser.add_argument('-d', '--dir', dest='directory', type=str, default='out/html',
+                        help="Target directory to save files. Default value is out/html.")
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true', help="Verbose output")
 
     args = parser.parse_args()

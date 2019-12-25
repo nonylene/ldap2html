@@ -99,9 +99,11 @@ optional arguments:
   -h, --help            show this help message and exit
   -n DOMAIN, --domain DOMAIN
                         Domain name for HTML files
-  -d DIRECTORY, --dir DIRECTORY
+  -d TARGET_DIRECTORY, --dir TARGET_DIRECTORY
                         Target directory to save files. Default value is
                         out/ldif.
+  -b BASE_DIRECTORY, --basedir BASE_DIRECTORY
+                        Base (prefix) directory for html files.
   -m, --modify          Generate LDIF for ldapmodify
   -v, --verbose         Verbose output
 ```
