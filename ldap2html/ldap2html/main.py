@@ -28,7 +28,7 @@ def ldap2html(config: Config):
             html = html_file.to_html()
             path = directory / html_file.filename
             path.parent.mkdir(parents=True, exist_ok=True)
-            with open(directory / html_file.filename, "w") as f:
+            with open(path, "w") as f:
                 f.write(html)
         except Exception:
             print(f"Failed to process file: {l_html_file}", file=sys.stderr)
